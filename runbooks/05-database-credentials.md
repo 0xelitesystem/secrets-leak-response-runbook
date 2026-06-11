@@ -6,7 +6,7 @@ DB connection strings or credentials exposed.
 
 If the database is reachable from the internet:
 - Block at the network layer immediately. Security group / firewall rule to drop all traffic.
-- This will break your application — accept the outage, restore via the next steps.
+- This will break your application, accept the outage, restore via the next steps.
 
 If the database is internal-only:
 - Lower urgency, but still rotate immediately.
@@ -41,8 +41,8 @@ Look for:
 
 ## Containment
 
-- Audit DB users for any created during the leak window — attacker persistence.
-- Check for new triggers, stored procedures, views — backdoors.
+- Audit DB users for any created during the leak window, attacker persistence.
+- Check for new triggers, stored procedures, views, backdoors.
 - If the leaked credential had write access, check for malicious data modifications. This may require comparing to a backup taken before the leak.
 - If the leaked credential had DBA access, treat the database as fully compromised. Restore from clean backup or perform very thorough cleanup.
 

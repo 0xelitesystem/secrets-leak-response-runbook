@@ -4,7 +4,7 @@ The shared secret for an OAuth client (used in authorization code or client cred
 
 ## Impact
 
-- For confidential clients in authorization code flow: attacker can complete the flow, obtaining tokens — but only if they also have a valid authorization code (which requires user interaction or a redirect_uri attack).
+- For confidential clients in authorization code flow: attacker can complete the flow, obtaining tokens, but only if they also have a valid authorization code (which requires user interaction or a redirect_uri attack).
 - For client credentials flow: attacker can directly obtain tokens with the client's permissions. This is high-impact.
 - For public clients (mobile, SPA): client secrets shouldn't be used at all (use PKCE). If your "secret" is in a mobile binary, it was already public.
 
@@ -13,7 +13,7 @@ The shared secret for an OAuth client (used in authorization code or client cred
 - Rotate the secret in the OAuth provider's console.
 - Update the secret in the application using it.
 - Confirm the application is working with the new secret.
-- Audit recent token issuance for the client ID — pull provider logs for the leak window.
+- Audit recent token issuance for the client ID, pull provider logs for the leak window.
 
 ## Investigate
 
@@ -42,7 +42,7 @@ If the client had access to user data via tokens it obtained:
 ## Replacement
 
 - Multiple secrets for rolling rotation: many providers support 2 active secrets at once. Add new, deploy, then remove old.
-- Confidential clients only — never assume a "secret" in a public client is meaningful security.
+- Confidential clients only, never assume a "secret" in a public client is meaningful security.
 - Prefer mTLS or private_key_jwt client authentication over shared client_secret.
 
 ## Prevention
@@ -55,5 +55,5 @@ If the client had access to user data via tokens it obtained:
 
 ## Adjacent
 
-- Client secret often co-located with other secrets in a config file. Audit other secrets in the same file/commit/place — assume those leaked too.
+- Client secret often co-located with other secrets in a config file. Audit other secrets in the same file/commit/place, assume those leaked too.
 - For OAuth client_credentials grants used for service-to-service: the "service identity" is now potentially impersonable. If that service has high privileges in downstream systems, the blast radius extends there.

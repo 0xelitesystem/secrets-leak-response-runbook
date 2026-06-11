@@ -16,7 +16,7 @@ gcloud iam service-accounts keys list \
 
 ## Disable / delete
 
-GCP doesn't have a "disable" state for keys — you delete:
+GCP doesn't have a "disable" state for keys, you delete:
 
 ```bash
 gcloud iam service-accounts keys delete <KEY_ID> \
@@ -47,7 +47,7 @@ If keys are unavoidable (external systems):
 
 - Check IAM policies the service account had. Anything sensitive (Owner, Editor, custom roles with secret access) means treat the leak as severe.
 - Check what data it could read. If it had `roles/storage.objectViewer` on production data, assume that data is exposed.
-- Look for created keys, modified IAM bindings, new service accounts — attacker persistence patterns.
+- Look for created keys, modified IAM bindings, new service accounts, attacker persistence patterns.
 
 ## Org-level prevention
 

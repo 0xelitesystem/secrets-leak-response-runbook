@@ -35,7 +35,7 @@ For longer history, query the CloudTrail S3 bucket directly with Athena.
 ## Replacement workflow
 
 If a human user:
-- Decide whether they need long-lived keys at all. Most don't — IAM Identity Center (formerly SSO) is the right answer.
+- Decide whether they need long-lived keys at all. Most don't, IAM Identity Center (formerly SSO) is the right answer.
 - If they do, generate a new key, deliver out-of-band, confirm working, then deactivate the old one.
 
 If a workload:

@@ -28,7 +28,7 @@ For personal accounts, the security log under Settings → Security log is the e
 
 ## Containment
 
-- If the PAT had `admin:org` or `delete_repo`, treat as severe — assume worst case.
+- If the PAT had `admin:org` or `delete_repo`, treat as severe, assume worst case.
 - Audit any repos the user or org owns for changes during the leak window:
   - Force-pushed branches (`git reflog` on cloned copies of important branches).
   - New collaborators / new outside collaborators.

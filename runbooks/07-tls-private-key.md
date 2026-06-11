@@ -7,7 +7,7 @@ Private key for a TLS certificate exposed. Attacker can impersonate the server t
 - Revoke the certificate via the issuing CA's revocation process.
 - Issue a new keypair and certificate.
 - Deploy the new cert to all servers using it.
-- Replace it in load balancers, CDN, API gateways, custom services — make a list before starting.
+- Replace it in load balancers, CDN, API gateways, custom services, make a list before starting.
 
 ## Revocation mechanics
 
@@ -40,7 +40,7 @@ Private key for a TLS certificate exposed. Attacker can impersonate the server t
 - If this was a wildcard cert and used in many places, the rotation effort is large. Plan phased rollout but prioritize internet-facing first.
 - HPKP is deprecated but if you're still pinning, update pins.
 - Certificate transparency logs: the new cert will appear in CT logs publicly. Anomaly detection on CT logs can spot future unauthorized issuances.
-- Code-signing certs: a leaked code-signing cert is severely impactful — attackers can sign malware as you. Revoke immediately and notify customers / OS vendors who may need to flag your software.
+- Code-signing certs: a leaked code-signing cert is severely impactful, attackers can sign malware as you. Revoke immediately and notify customers / OS vendors who may need to flag your software.
 
 ## Prevention
 
@@ -48,4 +48,4 @@ Private key for a TLS certificate exposed. Attacker can impersonate the server t
 - Short-lived certificates (Let's Encrypt 90 days, automated renewal). Limits the value of any historical key leak.
 - Per-service certificates rather than wildcard. Lateral compromise contained.
 - File system permissions: key file readable only by the service account that needs it.
-- Include certificate inventory in your asset management — you can't rotate what you don't know exists.
+- Include certificate inventory in your asset management, you can't rotate what you don't know exists.

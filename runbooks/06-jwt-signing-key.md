@@ -10,7 +10,7 @@ This is the highest-severity credential type. With the signing key, the attacker
 
 - Rotate the key immediately. All existing tokens become invalid.
 - This will sign out every user. Accept the impact; the alternative is leaving the door open.
-- For systems with a refresh + access token model, rotating the access-signing key invalidates access tokens. Refresh tokens may use a separate key — rotate that too if uncertain.
+- For systems with a refresh + access token model, rotating the access-signing key invalidates access tokens. Refresh tokens may use a separate key, rotate that too if uncertain.
 
 ## Multi-key rotation (if your system supports it)
 
@@ -21,7 +21,7 @@ Better systems support a key set with current + previous keys (`kid` in the JWT 
 3. Active sessions naturally migrate to new tokens as they refresh.
 4. Once refresh window passes (e.g., 1 hour for short-lived access tokens), remove the old key.
 
-If your system signs and verifies with the same single key, you don't have this option — rotation is hard sign-out.
+If your system signs and verifies with the same single key, you don't have this option, rotation is hard sign-out.
 
 ## Investigate
 
@@ -35,12 +35,12 @@ If your system signs and verifies with the same single key, you don't have this 
 - Force re-authentication for all users (achieved by key rotation).
 - Re-enroll MFA where appropriate.
 - Audit and revoke any account modifications made during the leak window.
-- If the key was a shared-secret HMAC key, no further action — new key replaces it. If it was an asymmetric key (RSA/ECDSA private key), revoke the public key reference and rotate the keypair.
+- If the key was a shared-secret HMAC key, no further action, new key replaces it. If it was an asymmetric key (RSA/ECDSA private key), revoke the public key reference and rotate the keypair.
 
 ## Adjacent considerations
 
 - Algorithm: was the leaked key used with HS256 (symmetric, the secret is everything) or RS256 (asymmetric, the leaked private key alone is enough)? Both are equally bad but matter for understanding scope.
-- Key material in: env vars, secret manager, config files, KMS — wherever it lived, audit access logs to see who/what could have read it.
+- Key material in: env vars, secret manager, config files, KMS, wherever it lived, audit access logs to see who/what could have read it.
 - Cookie-based sessions issued by the same auth system may also need rotation.
 
 ## Prevention
@@ -49,5 +49,5 @@ If your system signs and verifies with the same single key, you don't have this 
 - Store keys in KMS / HSM / Secret Manager. Sign by API call to the KMS rather than handling the key in app memory where possible.
 - Keep keys in memory only; don't write to disk or log them.
 - Periodic rotation as a routine practice (annually at minimum), so the procedure works when you need it for an incident.
-- Asymmetric (RS256, ES256, EdDSA) preferred over symmetric (HS256) — the verifying service doesn't need the signing key.
+- Asymmetric (RS256, ES256, EdDSA) preferred over symmetric (HS256), the verifying service doesn't need the signing key.
 - Short token lifetimes (15 minutes for access tokens) reduce the value of historical leaked keys.
