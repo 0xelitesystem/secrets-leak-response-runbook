@@ -6,13 +6,13 @@ Eight runbooks for responding to specific secret leaks. Generic guidance ("rotat
 
 Every runbook has these sections:
 
-1. **Trigger** — how you found out about the leak
-2. **Containment** — what to do before rotation, to limit further damage
-3. **Rotation** — exact steps in the right order, including dependencies
-4. **Investigation** — what the attacker may have done with the credential
-5. **Audit logging** — where to look in vendor logs to scope the incident
-6. **Recovery** — restoring service and access for legitimate users
-7. **Post-rotation hardening** — controls to add so this leaks less easily next time
+1. **Trigger**, how you found out about the leak
+2. **Containment**, what to do before rotation, to limit further damage
+3. **Rotation**, exact steps in the right order, including dependencies
+4. **Investigation**, what the attacker may have done with the credential
+5. **Audit logging**, where to look in vendor logs to scope the incident
+6. **Recovery**, restoring service and access for legitimate users
+7. **Post-rotation hardening**, controls to add so this leaks less easily next time
 
 ## Contents
 
@@ -29,13 +29,13 @@ Every runbook has these sections:
 
 ## Intended use
 
-When a secret is leaked, the panic instinct is to rotate immediately. That's often correct, but not always — for some credentials (TLS keys with active sessions, JWT signing keys with issued tokens still in flight), the order of operations matters. Read the runbook for the specific credential type before you start typing.
+When a secret is leaked, the panic instinct is to rotate immediately. That's often correct, but not always, for some credentials (TLS keys with active sessions, JWT signing keys with issued tokens still in flight), the order of operations matters. Read the runbook for the specific credential type before you start typing.
 
 These runbooks assume you have the access needed to rotate and audit. If you don't, escalate first.
 
 ## Contributing
 
-If you have a secret type not covered here that you've responded to in production, open a PR with a runbook in the same skeleton. Avoid runbooks for secrets where rotation is trivially "delete and recreate, nothing depends on it" — those don't need a document.
+If you have a secret type not covered here that you've responded to in production, open a PR with a runbook in the same skeleton. Avoid runbooks for secrets where rotation is trivially "delete and recreate, nothing depends on it", those don't need a document.
 
 ## Related repositories
 

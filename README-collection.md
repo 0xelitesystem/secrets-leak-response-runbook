@@ -15,11 +15,11 @@ Per-credential-type runbooks for the most common secret leak scenarios. Each fol
 
 ## How to use
 
-Find the credential type, follow the procedure. The runbooks assume you've already detected the leak — for full incident handling (forensics, regulatory notification, etc.), see the incident-response-runbooks collection.
+Find the credential type, follow the procedure. The runbooks assume you've already detected the leak, for full incident handling (forensics, regulatory notification, etc.), see the incident-response-runbooks collection.
 
 ## General principles for any credential leak
 
 - Rotate before deleting. Preserve the old credential identifier for log correlation.
 - Investigate before assuming clean. Most leaks have evidence of attempted use even when not visibly exploited.
 - Look for adjacent secrets. Where one was leaked, others often were.
-- Update the prevention controls — leak detection, rotation cadence, scope reduction — for next time.
+- Update the prevention controls, leak detection, rotation cadence, scope reduction, for next time.
