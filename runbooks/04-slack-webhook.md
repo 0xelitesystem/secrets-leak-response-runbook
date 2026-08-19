@@ -11,7 +11,7 @@ Slack incoming webhooks (`https://hooks.slack.com/services/T.../B.../...`) allow
 
 ## Revoke
 
-- Slack workspace admin → Apps → find the integration → revoke the specific webhook URL.
+- Slack workspace admin -> Apps -> find the integration -> revoke the specific webhook URL.
 - Alternative: revoke the app entirely if the webhook was its only legitimate use.
 
 ## Investigate

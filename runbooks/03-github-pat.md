@@ -11,8 +11,8 @@
 
 GitHub auto-revokes PATs they detect as exposed in public commits, but only on github.com. Don't rely on this.
 
-- Classic / fine-grained PAT: github.com → Settings → Developer settings → Personal access tokens → Revoke.
-- OAuth: github.com → Settings → Applications → Authorized OAuth Apps → Revoke.
+- Classic / fine-grained PAT: github.com -> Settings -> Developer settings -> Personal access tokens -> Revoke.
+- OAuth: github.com -> Settings -> Applications -> Authorized OAuth Apps -> Revoke.
 - GitHub App: revoke the installation if the App itself is compromised; otherwise tokens expire.
 
 ## Investigate
@@ -24,7 +24,7 @@ GitHub's audit log (org-level, requires Enterprise for full retention) shows tok
 - Workflows triggered.
 - New SSH keys / GPG keys / deploy keys / new PATs added under the account.
 
-For personal accounts, the security log under Settings → Security log is the equivalent.
+For personal accounts, the security log under Settings -> Security log is the equivalent.
 
 ## Containment
 

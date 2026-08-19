@@ -5,8 +5,8 @@ For full incident handling beyond credential rotation, see incident-response-run
 ## Identify the key
 
 ```
-AKIA*  → IAM user long-lived access key
-ASIA*  → Temporary STS credentials (session token expires automatically)
+AKIA*  -> IAM user long-lived access key
+ASIA*  -> Temporary STS credentials (session token expires automatically)
 ```
 
 `aws sts get-access-key-info --access-key-id AKIA...` tells you which account owns it.

@@ -28,7 +28,7 @@ Once deleted, the key is unusable immediately. There's no grace period.
 ## Investigate
 
 GCP Audit Logs show service account activity:
-- Console → Logging → Logs Explorer
+- Console -> Logging -> Logs Explorer
 - Filter: `protoPayload.authenticationInfo.principalEmail="<service-account-email>"`
 - Look at: BigQuery queries (data exfil), Compute creation (mining), IAM modifications, GCS bucket changes, Secret Manager reads.
 
